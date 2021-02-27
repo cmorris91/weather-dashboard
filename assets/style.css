@@ -14,3 +14,8 @@ nav {
    font-weight: bold;
 }
 
+
+#standby-msg {
+    text-align: center;
+    color: rgb(52, 71, 107);
+}
