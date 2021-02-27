@@ -14,8 +14,11 @@ nav {
    font-weight: bold;
 }
 
-
 #standby-msg {
     text-align: center;
     color: rgb(52, 71, 107);
+}
+
+.forecast-box {
+    background-color: rgb(133, 133, 226);
 }

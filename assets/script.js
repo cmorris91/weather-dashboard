@@ -9,7 +9,6 @@ var recentCity = $("#recent-city");
 
 function getCurrentWeather() { 
     var cityInput = inputEl.val();
-    var baseUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&appid=e5b1844529612dd15add6a3867ed6a86&units=imperial";
 
     fetch("http://www.mapquestapi.com/geocoding/v1/address?key=JgWvLdgBrNVGSTkR4kIyGDAmLg2LVUkK&location=" + cityInput)
     .then(function(response) {
@@ -26,8 +25,6 @@ function getCurrentWeather() {
     .then(function (data) {
         console.log(data)
         
-
-        
         var cityName = $('<h1>');    
         var temp = $('<p>');   
         var humidity = $('<p>');
@@ -37,31 +34,33 @@ function getCurrentWeather() {
         
         var iconUrl = " http://openweathermap.org/img/wn/" + icon + "@2x.png";
         
-        $('.icon').attr('src', iconUrl);
+        $('.icon').attr('src', iconUrl).css('background-color', 'black');
         cityName.text(cityInput.toUpperCase());
         temp.text("Temp: " + data.current.temp + " ° F ");
         humidity.text("Humidity: " + data.current.humidity + " %");
-        uv.text(data.current.uvi);
+        uv.text("UV Index: " + data.current.uvi);
         
-        // wind.text("Wind: " + data.current.weather.wind + " MPH");
-        // console.log(wind);
+       
+    //    this is the part im having trouble with
+        // wind.text("Wind: " + data.current.weather.wind_speed + " MPH");
+        console.log(data.current.weather);
         
         currentWeatherEl.append(cityName);
         currentWeatherEl.append(temp);
         currentWeatherEl.append(humidity);
         currentWeatherEl.append(wind);
        
-        // if(uv <= 3) {
-        //     $('<button>').attr('background-color', 'yellow');
-        // }
-        // else if (uv >= 6) {
-        //     $('<button>').attr('background-color', 'red');
-        // }
-        // else {
-        //     $('<button>').attr('background-color', 'orange');
-        // }
+        if(data.current.uvi <= 3) {
+            uv.css("background-color", "yellow");
+        }
+        else if (data.current.uvi >= 6) {
+            uv.css("background-color", "red");
+        }
+        else {
+            uv.css("background-color", "orange");
+        }
 
-        currentWeatherEl.append("UV Index: " + uv);
+        currentWeatherEl.append(uv);
     })
    
         })
