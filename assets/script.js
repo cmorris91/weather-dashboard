@@ -4,11 +4,15 @@ var inputEl = $(".city-input");
 var currentWeatherEl = $("#current-weather");
 var forecastEl = $("#forecast");
 var recentCity = $("#recent-city");
-
+var cityEl = $('#cityname');
+var dateEl = $('#currentdate');
+var standInMsg = $('#standby-msg');
 
 
 function getCurrentWeather() { 
+    standInMsg.remove();
     var cityInput = inputEl.val();
+    var date = moment().format("DD/MM/YYYY")
 
     fetch("http://www.mapquestapi.com/geocoding/v1/address?key=JgWvLdgBrNVGSTkR4kIyGDAmLg2LVUkK&location=" + cityInput)
     .then(function(response) {
@@ -34,18 +38,19 @@ function getCurrentWeather() {
         
         var iconUrl = " http://openweathermap.org/img/wn/" + icon + "@2x.png";
         
-        $('.icon').attr('src', iconUrl).css('background-color', 'black');
+        $('.icon').attr('src', iconUrl).css('background-color', 'rgb(22 79 163 / 61%)');
         cityName.text(cityInput.toUpperCase());
         temp.text("Temp: " + data.current.temp + " ° F ");
         humidity.text("Humidity: " + data.current.humidity + " %");
         uv.text("UV Index: " + data.current.uvi);
         
        
-    //    this is the part im having trouble with
-        // wind.text("Wind: " + data.current.weather.wind_speed + " MPH");
-        console.log(data.current.weather);
+    
+        wind.text("Wind: " + data.current.wind_speed + " MPH");
+        console.log(data.current.wind_speed);
         
-        currentWeatherEl.append(cityName);
+        dateEl.append(date);
+        cityEl.append(cityName);
         currentWeatherEl.append(temp);
         currentWeatherEl.append(humidity);
         currentWeatherEl.append(wind);
@@ -71,10 +76,6 @@ function getCurrentWeather() {
 })
 
 }
-
-
-
-   
 
 
 $("#button-addon2").on('click',getCurrentWeather)
