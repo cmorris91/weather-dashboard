@@ -12,6 +12,7 @@ nav {
 .navbar-brand {
    font-size: 40px;
    font-weight: bold;
+   
 }
 
 #standby-msg {
@@ -19,9 +20,11 @@ nav {
     color: rgb(52, 71, 107);
 }
 
-/* .forecast-box {
-    background-color: rgba(22, 79, 163, 0.966);
-} */
+.forecast-box {
+    margin: 5px;
+    color: white;
+    font-size: 18px;
+}
 
 #current-weather {
     font-size: 25px;
