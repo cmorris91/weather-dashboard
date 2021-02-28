@@ -7,7 +7,7 @@ var recentCity = $("#recent-city");
 var cityEl = $('#cityname');
 var dateEl = $('#currentdate');
 var standInMsg = $('#standby-msg');
-var forecastBox = $('.forecast-box');
+var forecastBox = $('.forecast-box')
 
 function getCurrentWeather() { 
     standInMsg.remove();
@@ -68,25 +68,33 @@ function getCurrentWeather() {
        var mydata = data.daily
        for(var i = 0; i < 5; i++) {
            console.log(mydata[i]);
+           var myDiv = $('<div>');
            var forecastDate = $('<p>')
            var forecastTemp = $('<p>');
            var forecastHumidity = $('<p>');
+           var imgEl = $('<img>')
            var unixDate = mydata[i].dt;
-           var normalDate = moment.unix(unixDate).format("DD/MM/YY");
+           var normalDate = moment.unix(unixDate).format("MM/DD/YY");
            var myicon = mydata[i].weather[0].icon
-           console.log(myicon)
            var myIconUrl = " https://openweathermap.org/img/wn/" + myicon + "@2x.png";
-          
-          $('.icon2').attr('src', myIconUrl)
+           
+           imgEl.attr('src', myIconUrl);
            forecastTemp.text("Temp: " + mydata[i].temp.day + "° F");
            forecastHumidity.text("Humidity: " + mydata[i].humidity + "%");
+           myDiv.css('background-color', 'rgba(22, 79, 163, 0.966)').css('margin', '5px').css('border-radius', '5px');
+           myDiv.addClass("col");
+
+          
            
-            forecastBox.css('background-color', 'rgba(22, 79, 163, 0.966)')
+
 
            forecastDate.append(normalDate);
-           forecastBox.append(forecastDate);
-           forecastBox.append(forecastTemp);
-           forecastBox.append(forecastHumidity);
+           myDiv.append(forecastDate);
+           myDiv.append(forecastTemp);
+           myDiv.append(forecastHumidity);
+           myDiv.append(imgEl);
+
+           forecastBox.append(myDiv);
        }
     })
 })
@@ -95,9 +103,34 @@ function getCurrentWeather() {
 })
 }
 
-// function getInputs() {
-//     var lastCity = localStorage.getItem("recentcity");
-// }
+var cityList = $('#recent-city');
 
-$("#button-addon2").on('click',getCurrentWeather)
-    
+function getInputs() {
+    var lastCity = localStorage.getItem("recentcity");
+    var cityBtn = $('<li>')
+
+    cityBtn.attr('type', 'button').addClass('list-item');
+    cityBtn.append(lastCity);
+    cityList.append(cityBtn);
+
+    cityBtn.on('click', function() {
+        getCurrentWeather();
+    })
+}
+
+
+$("#button-addon2").on('click',function() {
+    getCurrentWeather();
+    getInputs();
+    inputEl.val("");
+
+})
+
+// var weatherBox = $('#currentWeatherBox');
+
+// function clearPage() {
+//    dateEl.val("");
+//    cityEl.val("");
+//    currentWeatherEl.empty();
+//    forecastBox.empty();
+// }
