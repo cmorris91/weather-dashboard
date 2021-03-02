@@ -25,7 +25,7 @@ function getCurrentWeather() {
 
     localStorage.setItem("recentcity", cityInput)
 
-    fetch("http://www.mapquestapi.com/geocoding/v1/address?key=JgWvLdgBrNVGSTkR4kIyGDAmLg2LVUkK&location=" + cityInput)
+    fetch("https://www.mapquestapi.com/geocoding/v1/address?key=JgWvLdgBrNVGSTkR4kIyGDAmLg2LVUkK&location=" + cityInput)
     .then(function(response) {
         return response.json()
  })
