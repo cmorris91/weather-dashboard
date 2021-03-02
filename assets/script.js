@@ -8,8 +8,17 @@ var cityEl = $('#cityname');
 var dateEl = $('#currentdate');
 var standInMsg = $('#standby-msg');
 var forecastBox = $('.forecast-box')
+var weatherBox = $('#currentWeatherBox');
+
+function clearPage() {
+   cityEl.html('');
+   dateEl.html('');
+   currentWeatherEl.html('');
+  forecastBox.html('');
+}
 
 function getCurrentWeather() { 
+    clearPage();
     standInMsg.remove();
     var cityInput = inputEl.val();
     var date = moment().format("DD/MM/YYYY")
@@ -62,8 +71,8 @@ function getCurrentWeather() {
         }
         // appending uvindex to page
         currentWeatherEl.append(uv);
-
-       forecastEl.text('5 Day Forecast: ');
+       
+               forecastEl.text('5 Day Forecast: ');
         
        var mydata = data.daily
        for(var i = 0; i < 5; i++) {
@@ -126,11 +135,3 @@ $("#button-addon2").on('click',function() {
 
 })
 
-// var weatherBox = $('#currentWeatherBox');
-
-// function clearPage() {
-//    dateEl.val("");
-//    cityEl.val("");
-//    currentWeatherEl.empty();
-//    forecastBox.empty();
-// }
