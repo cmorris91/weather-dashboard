@@ -27,6 +27,7 @@ function getCurrentWeather() {
 
     fetch("https://www.mapquestapi.com/geocoding/v1/address?key=JgWvLdgBrNVGSTkR4kIyGDAmLg2LVUkK&location=" + cityInput)
     .then(function(response) {
+        console.log(response);
         return response.json()
  })
  .then(function(data) {
@@ -45,7 +46,7 @@ function getCurrentWeather() {
         var wind = $('<p>');
         var icon = data.current.weather[0].icon
         var uv = $('<span>').attr("background-color", "gray");
-        var iconUrl = " http://openweathermap.org/img/wn/" + icon + "@2x.png";
+        var iconUrl = " https://openweathermap.org/img/wn/" + icon + "@2x.png";
         // giving the elements the text I wan =t them to have via the api data
         $('.icon').attr('src', iconUrl).css('background-color', 'rgb(22 79 163 / 61%)');
         cityName.text(cityInput.toUpperCase());
@@ -93,10 +94,6 @@ function getCurrentWeather() {
            myDiv.css('background-color', 'rgba(22, 79, 163, 0.966)').css('margin', '5px').css('border-radius', '5px');
            myDiv.addClass("col");
 
-          
-           
-
-
            forecastDate.append(normalDate);
            myDiv.append(forecastDate);
            myDiv.append(forecastTemp);
@@ -122,7 +119,11 @@ function getInputs() {
     cityBtn.append(lastCity);
     cityList.append(cityBtn);
 
+    var newCityInput = cityBtn.html();
+    console.log(newCityInput);
+
     cityBtn.on('click', function() {
+        inputEl.val(newCityInput);
         getCurrentWeather();
     })
 }
