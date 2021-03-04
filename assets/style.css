@@ -39,3 +39,9 @@ nav {
     margin: 5px;
     border-radius: 5px;
 }
+
+@media screen and (max-width: 600px) {
+    .navbar-brand {
+        font-size: 30px;
+    }
+};

@@ -92,7 +92,7 @@ function getCurrentWeather() {
            forecastTemp.text("Temp: " + mydata[i].temp.day + "° F");
            forecastHumidity.text("Humidity: " + mydata[i].humidity + "%");
            myDiv.css('background-color', 'rgba(22, 79, 163, 0.966)').css('margin', '5px').css('border-radius', '5px');
-           myDiv.addClass("col");
+           myDiv.addClass("col-12 col-lg-2");
 
            forecastDate.append(normalDate);
            myDiv.append(forecastDate);
