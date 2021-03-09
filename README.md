@@ -13,3 +13,15 @@ All of that information is rendered to the page
 The users previously typed in cities are saved and rendered back onto the page in a list format
 
 That list can be clicked on for same weather conditions
+
+# Technologies Used 
+HTML, CSS, Javascript, JQuery, Bootstrap, Moment, Google Fonts, OpenWeatherApi
+
+# Links
+Deployed:
+https://cmorris91.github.io/weather-homework/
+Repo:
+https://github.com/cmorris91/weather-homework
+
+# Photo 
+![Screenshot of project](./assets/img/screenshot.jpg)
