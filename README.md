@@ -25,3 +25,5 @@ https://github.com/cmorris91/weather-homework
 
 # Photo 
 ![Screenshot of project](./assets/img/screenshot.jpg)
+
+![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)`
